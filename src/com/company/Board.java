@@ -11,7 +11,7 @@ public class Board extends JPanel implements ActionListener {
     public static char[][] board2DArray = new char[15][15];
     private JButton buttonsArray[][] = new JButton[15][15];
     private int col, row;
-    private char turn = 'X';
+    public static char turn = 'X';
     public Board() {
         setLayout(new GridLayout(15,15));
         initialiseBoard();
