@@ -122,7 +122,7 @@ public class QLearningTest {
         }
         // previous state's action estimations
         double[] previousActionEstimations = qValues[previousState];
-        // update expexted summary reward of the previous state
+        // update expected summary reward of the previous state
         previousActionEstimations[action] *= (1.0 - learningRate);
         previousActionEstimations[action] += (learningRate * (reward + discountFactor * maxNextExpectedReward));
     }
