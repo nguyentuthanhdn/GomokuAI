@@ -11,6 +11,7 @@ public class Board extends JPanel implements ActionListener {
     public static char[][] board2DArray = new char[15][15];
     private JButton buttonsArray[][] = new JButton[15][15];
     private int col, row;
+    public static int state = 0;
     public static char turn = 'X';
     public Board() {
         setLayout(new GridLayout(15,15));
@@ -30,6 +31,7 @@ public class Board extends JPanel implements ActionListener {
                     resetGame();
                     turn = 'X';
                 }
+
             }
             else if (turn == 'O') {
                 buttonClicked.setForeground(Color.BLACK);
@@ -42,6 +44,7 @@ public class Board extends JPanel implements ActionListener {
                     turn = 'X';
                 }
             }
+            state++;
         }
     }
     private void initialiseBoard() {

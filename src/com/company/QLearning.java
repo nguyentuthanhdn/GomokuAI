@@ -4,7 +4,7 @@ import java.util.Random;
 
 //TODO Refer to this resource for creating and finishing this class
 // https://github.com/accord-net/java/blob/master/Catalano.MachineLearning/src/Catalano/MachineLearning/QLearning.java#L70
-public class QLearningTest {
+public class QLearning {
     // amount of possible states
     private int states;
     // amount of possible actions
@@ -40,7 +40,7 @@ public class QLearningTest {
      * @param explorationPolicy Exploration policy.
      * @param randomize         Randomize action estimates or not.
      */
-    public QLearningTest(int states, int actions, IExplorationPolicy explorationPolicy, boolean randomize) {
+    public QLearning(int states, int actions, IExplorationPolicy explorationPolicy, boolean randomize) {
         this.states = states;
         this.actions = actions;
         this.explorationPolicy = explorationPolicy;
