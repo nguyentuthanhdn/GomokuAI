@@ -1,99 +1,41 @@
 package com.company;
 
-import org.jetbrains.annotations.NotNull;
+public class Board {
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+    public char[][] board2DArray;
 
-public class Board extends JPanel implements ActionListener {
-    public static char[][] board2DArray = new char[15][15];
-    private JButton buttonsArray[][] = new JButton[15][15];
-    private int col, row;
-    public static int state = 0;
-    public static char turn = 'X';
     public Board() {
-        setLayout(new GridLayout(15,15));
-        initialiseBoard();
-    }
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        JButton buttonClicked = (JButton) e.getSource();
-        if (buttonClicked.getText().equals("")) {
-            if (turn == 'X') {
-                buttonClicked.setForeground(Color.RED);
-                buttonClicked.setText("X");
-                update2DArray(buttonClicked);
-                turn = 'O';
-                if (checkWin()) {
-                    JOptionPane.showConfirmDialog(null, "Player 1 wins. Press any button to reset.");
-                    resetGame();
-                    turn = 'X';
-                }
-
-            }
-            else if (turn == 'O') {
-                buttonClicked.setForeground(Color.BLACK);
-                buttonClicked.setText("O");
-                update2DArray(buttonClicked);
-                turn = 'X';
-                if (checkWin()) {
-                    JOptionPane.showConfirmDialog(null, "Player 2 wins. Press any button to reset.");
-                    resetGame();
-                    turn = 'X';
-                }
-            }
-            state++;
-        }
-    }
-    private void initialiseBoard() {
-        for (int i = 0; i < 15; i++) {
-            for (int j = 0; j < 15; j++) {
-                buttonsArray[i][j] = new JButton();
-                buttonsArray[i][j].setText("");
-                buttonsArray[i][j].addActionListener(this::actionPerformed);
-                buttonsArray[i][j].setActionCommand(i + " " + j);
-                add(buttonsArray[i][j]);
-            }
-        }
+        board2DArray = new char[15][15];
     }
 
-    private void update2DArray(@NotNull JButton buttonClicked) {
-        String[] positionButtonClicked = buttonClicked.getActionCommand().split(" ");
-        row = Integer.parseInt(positionButtonClicked[0]);
-        col = Integer.parseInt(positionButtonClicked[1]);
-        if (buttonClicked.getText().equals("X")) {
+    public void update2DArray(char turn, int row, int col) {
+        if (turn == 'X') {
             board2DArray[row][col] = 'X';
         }
-        else if ((buttonClicked.getText().equals("O"))) {
+        else if (turn == 'O') {
             board2DArray[row][col] = 'O';
         }
-
     }
 
-    private void resetGame() {
+    public void resetBoard() {
         for (int i = 0; i < 15; i++) {
             for (int j = 0; j < 15; j++) {
-                buttonsArray[i][j].setText("");
                 board2DArray[i][j] = 0;
             }
         }
     }
 
-
-    private boolean checkWin() {
+    public boolean checkWin(int row, int col) {
 
         //TODO: HORIZONTAL
         int count = 0;
         //RIGHT
-        int i = 0, j = 1;
+        int i, j = 1;
         while (col+j < board2DArray[0].length && board2DArray[row][col] == board2DArray[row][col + j]) {
             count++;
             j++;
         }
         //LEFT
-        i = 0;
         j = 1;
         while (col-j >= 0 && board2DArray[row][col] == board2DArray[row][col - j]) {
             count++;
@@ -162,4 +104,13 @@ public class Board extends JPanel implements ActionListener {
         return false;
     }
 
+    public boolean isMoveLeft() {
+        for (int i = 0; i < 15; i++) {
+            for (int j = 0; j < 15; j++) {
+                if (board2DArray[i][j] != 'X' || board2DArray[i][j] != 'O')
+                    return true;
+            }
+        }
+        return false;
+    }
 }
