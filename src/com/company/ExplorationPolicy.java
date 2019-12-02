@@ -1,6 +1,6 @@
 package com.company;
 
-public interface IExplorationPolicy {
+public interface ExplorationPolicy {
     /**
      * The method chooses an action depending on the provided estimates. the
      * estimates can be any sort of estimate, which values usefulness of the action
@@ -9,5 +9,5 @@ public interface IExplorationPolicy {
      * @param actionEstimates Action estimates.
      * @return Returns selected action.
      */
-    int ChooseAction(double[] actionEstimates);
+    double ChooseAction(double[][] actionEstimates);
 }

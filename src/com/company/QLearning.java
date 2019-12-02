@@ -12,7 +12,7 @@ public class QLearning {
     // q-values
     private double[][] qValues;
     // exploration policy
-    private IExplorationPolicy explorationPolicy;
+    private ExplorationPolicy explorationPolicy;
     // discount factor
     /**
      * Discount factor for the expected summary reward. The value serves as
@@ -40,7 +40,7 @@ public class QLearning {
      * @param explorationPolicy Exploration policy.
      * @param randomize         Randomize action estimates or not.
      */
-    public QLearning(int states, int actions, IExplorationPolicy explorationPolicy, boolean randomize) {
+    public QLearning(int states, int actions, ExplorationPolicy explorationPolicy, boolean randomize) {
         this.states = states;
         this.actions = actions;
         this.explorationPolicy = explorationPolicy;
@@ -68,11 +68,11 @@ public class QLearning {
         return actions;
     }
 
-    public IExplorationPolicy getExplorationPolicy() {
+    public ExplorationPolicy getExplorationPolicy() {
         return explorationPolicy;
     }
 
-    public void setExplorationPolicy(IExplorationPolicy explorationPolicy) {
+    public void setExplorationPolicy(ExplorationPolicy explorationPolicy) {
         this.explorationPolicy = explorationPolicy;
     }
 

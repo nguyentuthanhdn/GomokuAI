@@ -1,6 +1,6 @@
 package com.company;
 
-public class GomokuAI implements IExplorationPolicy {
+public class GomokuAI {
     public static char[][] board;
     public static char turn;
     public static int state;
@@ -12,8 +12,5 @@ public class GomokuAI implements IExplorationPolicy {
 
 
 
-    @Override
-    public int ChooseAction(double[] actionEstimates) {
-        return 0;
-    }
+
 }
