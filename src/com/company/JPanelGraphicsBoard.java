@@ -14,7 +14,7 @@ public class JPanelGraphicsBoard extends JPanel implements ActionListener {
     public static char turn = 'X';
 
     private Board gameboard = new Board();
-
+    private QLearning_MyOwnVersion qLearning;
     public JPanelGraphicsBoard() {
         setLayout(new GridLayout(15,15));
         initialiseBoard();
@@ -52,6 +52,7 @@ public class JPanelGraphicsBoard extends JPanel implements ActionListener {
         buttonClicked.setText(player);
         setRowAndCol(buttonClicked);
         gameboard.update2DArray(turn, row, col);
+        qLearning.setBoard(gameboard.getBoard());
     }
 
     private void initialiseBoard() {
