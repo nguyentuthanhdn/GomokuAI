@@ -98,9 +98,9 @@ public class QLearning {
      * @param state Current state to get an action for.
      * @return Returns the action for the state.
      */
-    public int GetAction(int state) {
-        return explorationPolicy.ChooseAction(qValues[state]);
-    }
+    //public int GetAction(int state) {
+       // return explorationPolicy.ChooseAction(qValues[state]);
+    //}
 
     /**
      * Update Q-function's value for the previous state-action pair.

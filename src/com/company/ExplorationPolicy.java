@@ -9,5 +9,5 @@ public interface ExplorationPolicy {
      * @param actionEstimates Action estimates.
      * @return Returns selected action.
      */
-    double ChooseAction(double[][] actionEstimates);
+    void ChooseAction(double[][] actionEstimates);
 }
