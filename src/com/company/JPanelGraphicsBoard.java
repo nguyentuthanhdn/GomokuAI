@@ -14,7 +14,6 @@ public class JPanelGraphicsBoard extends JPanel implements ActionListener {
     public static char turn = 'X';
 
     private Board gameboard = new Board();
-    private QLearning_MyOwnVersion qLearning;
     public JPanelGraphicsBoard() {
         setLayout(new GridLayout(15,15));
         initialiseBoard();
@@ -22,6 +21,11 @@ public class JPanelGraphicsBoard extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton buttonClicked = (JButton) e.getSource();
+        if (!gameboard.isMoveLeft()) {
+            JOptionPane.showConfirmDialog(null, "No moves left. It's a draw. Press any button to reset.");
+            resetGame();
+            turn = 'X';
+        }
         if (buttonClicked.getText().equals("")) {
             if (turn == 'X') {
                 update(buttonClicked, Color.RED, "X");
@@ -43,7 +47,6 @@ public class JPanelGraphicsBoard extends JPanel implements ActionListener {
                 }
 
             }
-            state++;
         }
     }
 
@@ -52,7 +55,6 @@ public class JPanelGraphicsBoard extends JPanel implements ActionListener {
         buttonClicked.setText(player);
         setRowAndCol(buttonClicked);
         gameboard.update2DArray(turn, row, col);
-        qLearning.setBoard(gameboard.getBoard());
     }
 
     private void initialiseBoard() {
